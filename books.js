@@ -70,3 +70,39 @@ var bookList = [
 		read: false
 	}
 ];
+
+var _ = require('underscore');
+
+function getBooks (){
+	return bookList;
+}
+
+function getBook(id){
+	//we're passing in a string so convert to a number first
+	id = parseInt(id,10); // 10 is a 'radix' or number base ie base10
+	return _.find(bookList, function(book){
+		return book._id === id; //if this is true, returns that book object
+	});
+}
+
+function addBook(book){
+	if(book){
+		bookList.push(book);
+	}
+}
+
+function removeBook(id){
+	id = parseInt(id,10);
+	//get the index value of the book id
+	var index = _.findIndex(bookList, function(book){
+		return book._id ===id;
+	});
+	bookList.splice(index,1); //remove 1 item and that item is at index 'index'
+}
+
+module.exports = {
+	getBooks:getBooks,
+	getBook:getBook,
+	addBook:addBook,
+	removeBook:removeBook
+}

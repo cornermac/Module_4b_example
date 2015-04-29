@@ -1,5 +1,5 @@
 $(function () {
-	$.get('/books', function (bookList) {
+	$.get('/books', function (bookList) { //push the list items into an array 
 		var list = [];
 		if (bookList) {
 			bookList.forEach(function (book) {
