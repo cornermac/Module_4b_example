@@ -100,9 +100,25 @@ function removeBook(id){
 	bookList.splice(index,1); //remove 1 item and that item is at index 'index'
 }
 
+function updateBook(book){
+	var id = book._id; //grab the id we passed in
+	
+	var prop;
+	//find the index of the book
+	var bookIndex = _.findIndex(bookList, function(tome){
+		return tome._id === id;
+	});
+		
+	//now remove the element and write the updated object into the bookList array
+	bookList.splice(bookIndex, 1, book);
+}
+
+
+
 module.exports = {
 	getBooks:getBooks,
 	getBook:getBook,
 	addBook:addBook,
-	removeBook:removeBook
+	removeBook:removeBook,
+	updateBook:updateBook
 }

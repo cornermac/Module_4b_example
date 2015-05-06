@@ -45,6 +45,15 @@ app.delete('/books/:id',function(request,response){
 	response.sendStatus(200); //sends back ok in the body
 });
 
+app.put('/books/:id', function (request, response){
+	var id = request.params.id;
+	var bookUpdate = request.body;  //grabs the book object from the form using bodyparser
+	bookUpdate._id = id;
+	books.updateBook(bookUpdate);
+	
+});
+
+
 app.listen(8000, function(){
 	console.log('listening on port 8000');
 });
